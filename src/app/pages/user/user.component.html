@@ -1,18 +1,21 @@
 <div class="row">
+  <p>https://www.youtube.com/watch?v=eMJ5spB3P1c</p>
   <div class="col-md-4">
     <div class="card card-user">
       <div class="image">
-        <img src="assets/img/damir-bosnjak.jpg" alt="...">
+        <img src="assets/img/damir-bosnjak.jpg" alt="..." />
       </div>
       <div class="card-body">
         <div class="author">
           <a href="#">
-            <img class="avatar border-gray" src="assets/img/mike.jpg" alt="...">
+            <img
+              class="avatar border-gray"
+              src="assets/img/mike.jpg"
+              alt="..."
+            />
             <h5 class="title">Chet Faker</h5>
           </a>
-          <p class="description">
-            @chetfaker
-          </p>
+          <p class="description">@chetfaker</p>
         </div>
         <!-- <p class="description text-center">
           "I like the way you work it
@@ -124,15 +127,37 @@
             <div class="col-md-4 pr-1">
               <div class="form-group">
                 <label for="Email">Email address</label>
-                <input type="email" class="form-control" disabled="" placeholder="Email" formControlName="email" value="email">
+                <input
+                  type="email"
+                  class="form-control"
+                  disabled=""
+                  placeholder="Email"
+                  formControlName="email"
+                  value="email"
+                />
               </div>
             </div>
             <div class="col-md-4 px-1">
               <div class="form-group">
                 <label>First Name</label>
-                <input type="text" name="first-name" class="form-control" placeholder="Company" value="Chet" formControlName="firstName" [ngClass]="{'is-invalid':(profileEditForm.get('firstName').touched || profileEditForm.get('firstName').dirty && profileEditForm.get('firstName').invalid)}">
+                <input
+                  type="text"
+                  name="first-name"
+                  class="form-control"
+                  placeholder="Company"
+                  value="Chet"
+                  formControlName="firstName"
+                  [ngClass]="{
+                    'is-invalid':
+                      profileEditForm.get('firstName').touched ||
+                      (profileEditForm.get('firstName').dirty &&
+                        profileEditForm.get('firstName').invalid)
+                  }"
+                />
                 <span class="invalid-feedback">
-                  <span *ngIf="profileEditForm.get('firstName').errors?.required">
+                  <span
+                    *ngIf="profileEditForm.get('firstName').errors?.required"
+                  >
                     Please enter your first name.
                   </span>
                 </span>
@@ -141,9 +166,23 @@
             <div class="col-md-4 pl-1">
               <div class="form-group">
                 <label>Last Name</label>
-                <input type="text" class="form-control" placeholder="Last Name" value="Faker" formControlName="lastName" [ngClass]="{'is-invalid':(profileEditForm.get('lastName').touched || profileEditForm.get('lastName').dirty && profileEditForm.get('lastName').invalid)}">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name"
+                  value="Faker"
+                  formControlName="lastName"
+                  [ngClass]="{
+                    'is-invalid':
+                      profileEditForm.get('lastName').touched ||
+                      (profileEditForm.get('lastName').dirty &&
+                        profileEditForm.get('lastName').invalid)
+                  }"
+                />
                 <span class="invalid-feedback">
-                  <span *ngIf="profileEditForm.get('lastName').errors?.required">
+                  <span
+                    *ngIf="profileEditForm.get('lastName').errors?.required"
+                  >
                     Please enter your last name.
                   </span>
                 </span>
@@ -154,15 +193,36 @@
             <div class="col-md-6 pr-1">
               <div class="form-group">
                 <label>Old Password</label>
-                <input type="password" class="form-control" placeholder="Old Password" value="Chet" formControlName="oldPassword">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Old Password"
+                  value="Chet"
+                  formControlName="oldPassword"
+                />
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
                 <label>New Password</label>
-                <input type="password" class="form-control" placeholder="New Password" value="Faker" minlength="8" formControlName="newPassword" [ngClass]="{'is-invalid':(profileEditForm.get('newPassword').touched || profileEditForm.get('newPassword').dirty && profileEditForm.get('newPassword').invalid)}">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="New Password"
+                  value="Faker"
+                  minlength="8"
+                  formControlName="newPassword"
+                  [ngClass]="{
+                    'is-invalid':
+                      profileEditForm.get('newPassword').touched ||
+                      (profileEditForm.get('newPassword').dirty &&
+                        profileEditForm.get('newPassword').invalid)
+                  }"
+                />
                 <span class="invalid-feedback">
-                  <span *ngIf="profileEditForm.get('newPassword').errors?.minlength">
+                  <span
+                    *ngIf="profileEditForm.get('newPassword').errors?.minlength"
+                  >
                     Password must be longer than 8 characters.
                   </span>
                 </span>
@@ -207,7 +267,18 @@
           </div> -->
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round" [title]="profileEditForm.valid ? 'Save your entered data':'Disabled until the form data is valid'" [disabled]="!profileEditForm">Update Profile</button>
+              <button
+                type="submit"
+                class="btn btn-primary btn-round"
+                [title]="
+                  profileEditForm.valid
+                    ? 'Save your entered data'
+                    : 'Disabled until the form data is valid'
+                "
+                [disabled]="!profileEditForm"
+              >
+                Update Profile
+              </button>
             </div>
           </div>
         </form>
