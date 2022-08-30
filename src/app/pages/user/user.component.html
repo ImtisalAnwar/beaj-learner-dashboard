@@ -14,13 +14,13 @@
             @chetfaker
           </p>
         </div>
-        <p class="description text-center">
+        <!-- <p class="description text-center">
           "I like the way you work it
           <br> No diggity
           <br> I wanna bag it up"
-        </p>
+        </p> -->
       </div>
-      <div class="card-footer">
+      <!-- <div class="card-footer">
         <hr>
         <div class="button-container">
           <div class="row">
@@ -44,9 +44,9 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
-    <div class="card">
+    <!-- <div class="card">
       <div class="card-header">
         <h4 class="card-title">Team Members</h4>
       </div>
@@ -111,7 +111,7 @@
           </li>
         </ul>
       </div>
-    </div>
+    </div> -->
   </div>
   <div class="col-md-8">
     <div class="card card-user">
@@ -119,42 +119,57 @@
         <h5 class="card-title">Edit Profile</h5>
       </div>
       <div class="card-body">
-        <form>
+        <form novalidate (ngSubmit)="save()" [formGroup]="profileEditForm">
           <div class="row">
-            <div class="col-md-5 pr-1">
+            <div class="col-md-4 pr-1">
               <div class="form-group">
-                <label>Company (disabled)</label>
-                <input type="text" class="form-control" disabled="" placeholder="Company" value="Creative Code Inc.">
+                <label for="Email">Email address</label>
+                <input type="email" class="form-control" disabled="" placeholder="Email" formControlName="email" value="email">
               </div>
             </div>
-            <div class="col-md-3 px-1">
+            <div class="col-md-4 px-1">
               <div class="form-group">
-                <label>Username</label>
-                <input type="text" class="form-control" placeholder="Username" value="michael23">
+                <label>First Name</label>
+                <input type="text" name="first-name" class="form-control" placeholder="Company" value="Chet" formControlName="firstName" [ngClass]="{'is-invalid':(profileEditForm.get('firstName').touched || profileEditForm.get('firstName').dirty && profileEditForm.get('firstName').invalid)}">
+                <span class="invalid-feedback">
+                  <span *ngIf="profileEditForm.get('firstName').errors?.required">
+                    Please enter your first name.
+                  </span>
+                </span>
               </div>
             </div>
             <div class="col-md-4 pl-1">
               <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" placeholder="Email">
+                <label>Last Name</label>
+                <input type="text" class="form-control" placeholder="Last Name" value="Faker" formControlName="lastName" [ngClass]="{'is-invalid':(profileEditForm.get('lastName').touched || profileEditForm.get('lastName').dirty && profileEditForm.get('lastName').invalid)}">
+                <span class="invalid-feedback">
+                  <span *ngIf="profileEditForm.get('lastName').errors?.required">
+                    Please enter your last name.
+                  </span>
+                </span>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-md-6 pr-1">
               <div class="form-group">
-                <label>First Name</label>
-                <input type="text" class="form-control" placeholder="Company" value="Chet">
+                <label>Old Password</label>
+                <input type="password" class="form-control" placeholder="Old Password" value="Chet" formControlName="oldPassword">
               </div>
             </div>
             <div class="col-md-6 pl-1">
               <div class="form-group">
-                <label>Last Name</label>
-                <input type="text" class="form-control" placeholder="Last Name" value="Faker">
+                <label>New Password</label>
+                <input type="password" class="form-control" placeholder="New Password" value="Faker" minlength="8" formControlName="newPassword" [ngClass]="{'is-invalid':(profileEditForm.get('newPassword').touched || profileEditForm.get('newPassword').dirty && profileEditForm.get('newPassword').invalid)}">
+                <span class="invalid-feedback">
+                  <span *ngIf="profileEditForm.get('newPassword').errors?.minlength">
+                    Password must be longer than 8 characters.
+                  </span>
+                </span>
               </div>
             </div>
           </div>
-          <div class="row">
+          <!-- <div class="row">
             <div class="col-md-12">
               <div class="form-group">
                 <label>Address</label>
@@ -189,10 +204,10 @@
                 <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
               </div>
             </div>
-          </div>
+          </div> -->
           <div class="row">
             <div class="update ml-auto mr-auto">
-              <button type="submit" class="btn btn-primary btn-round">Update Profile</button>
+              <button type="submit" class="btn btn-primary btn-round" [title]="profileEditForm.valid ? 'Save your entered data':'Disabled until the form data is valid'" [disabled]="!profileEditForm">Update Profile</button>
             </div>
           </div>
         </form>
